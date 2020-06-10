@@ -9,4 +9,5 @@ This is the most complicated part. i used a combination of the HackRF One with t
 
 ## Devices
 Here are some details of device that I have automated in my house so far:
-
+* Fireplace remote (model: )
+* Hunter Light/Ceiling Fan (model: )
