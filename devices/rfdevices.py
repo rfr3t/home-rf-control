@@ -36,7 +36,22 @@ class Fireplace(RFDevice):
         off = '010001101001010001101001'
         bin_seq = (self.prefix + self._expand_tribits(off))*10
         self._send(bin_seq, dongle)
-   
+
+
+class LivingRoomFan(RFDevice):
+    def __init__(self):
+        self.frequency = 433900000
+        self.modulation = rflib.MOD_ASK_OOK
+        self.data_rate = int(1/0.0004)
+        self.prefix = '0'*35+'1'
+        self.code = None
+        
+    def set_fan_low(self, dongle):
+        low = '111111001000'
+        bin_seq = (self.prefix + self._expand_tribits(low)) * 6
+        self._send(bin_seq, dongle)
+        
+
 class HunterFanLight(RFDevice):
     def __init__(self):
         self.frequency = 433900000
@@ -78,6 +93,7 @@ class HunterFanLight(RFDevice):
         fanoff_pt2 = self.code + '10000001000101111110111010'
         bin_seq = 3*(self.prefix + self._expand_tribits(fanoff_pt1, ZERO='100', ONE='110')) + 2*(self.prefix + self._expand_tribits(fanoff_pt2, ZERO='100', ONE='110'))
         self._send(bin_seq, dongle)
+
 
 class Bedroom2FanLight(HunterFanLight):
     def __init__(self):

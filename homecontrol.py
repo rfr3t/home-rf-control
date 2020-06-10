@@ -62,4 +62,12 @@ def control_fan(action):
         abort(404, "Not Found")
     return "ok"
 
+@route('/livingroom-fan/<action>')
+def control_fan(action):
+    if action == 'low':
+        rf.LivingRoomFan().set_fan_low(d)
+    else:
+        abort(404, "Not Found")
+    return "ok"
+
 run(host='0.0.0.0', port=80)
