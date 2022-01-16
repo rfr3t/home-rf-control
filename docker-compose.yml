@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  web:
+    build: .
+    ports: 
+      - "80:80"
+    devices:
+      - /dev/bus/usb/:/dev/bus/usb
+    restart: unless-stopped
+    container_name: home-control
